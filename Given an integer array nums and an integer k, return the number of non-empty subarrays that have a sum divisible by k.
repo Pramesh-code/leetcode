@@ -1,0 +1,13 @@
+class Solution(object):
+    def subarraysDivByK(self, nums, k):
+        c=0
+        d=0
+        for i in range (0,len(nums)):
+            l=[]
+            for j in range(d,len(nums)):
+                l.append(nums[j])
+                sumofArray = sum(l)
+                if (sumofArray % k) == 0:
+                    c=c+1
+            d=d+1
+        return(c)
