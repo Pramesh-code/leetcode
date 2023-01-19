@@ -1,0 +1,21 @@
+Given an integer x, return true if x is a palindrome, and false otherwise.
+
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        y=x
+        p=0
+        r=0
+        if x<0:
+            return False
+        else:
+            while x > 0:
+                p = x % 10
+                r= r*10 + p
+                x=x//10
+            if r == y:
+                return True
+        
