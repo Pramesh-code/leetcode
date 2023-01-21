@@ -18,29 +18,33 @@ class Solution(object):
         :rtype: bool
         """
         l=[""]
-        if s.find('[)') == True or s.find('[}')== True or s.find('{]')==True or s.find('{)')==True or s.find('(]')==True or s.find('(}')==True:
+        if s.count("(") != s.count(")") or s.count("{") != s.count("}") or s.count("[") != s.count("]"):
             return False
         else: 
             for i in range(len(s)):
                 if s[i]=="(":
                     l.append('(')
                 elif s[i]==")":
+                    if "[" in l[-1]:
+                        return False
                     if "(" in l:
-                        l.remove('(')
+                        l.pop()
                     else:
                         return False
                 elif s[i]=="[":
                     l.append('[')
                 elif s[i]=="]":
-                    if "[" in l:
-                        l.remove('[')
+                    if "{" in l[-1]:
+                        return False
+                    elif "[" in l:
+                        l.pop()
                     else:
                         return False
                 elif s[i]=="{":
                     l.append("{")
                 elif s[i]=="}":
                     if "{" in l:
-                        l.remove('{')
+                        l.pop()
                     else:
                         return False
         if l == [""]:
